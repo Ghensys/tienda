@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticuloController!{% endblock %}
+
+{% block body %}
+
+<table id="carrito" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Color</th>
+            <th>Talla</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Precio Total</th>
+            <th>Envío</th>
+        </tr>
+    </thead>
+    <tbody>
+
+  {% for data in carrito %}
+    <tr>
+        <td>
+            <img src="{{ asset('uploads/image/' ~ data.Articulo.image) }}" class="img-fluid" alt="..." width="100" height="250">
+        </td>
+        <td>
+            {{ data.Articulo.nombre }}
+        </td>
+        <td>
+            {{ data.Articulo.color.nombre }}
+        </td>
+        <td>
+            {{ data.talla.nombre }}
+        </td>
+        <td>
+            {{ data.cantidad }}
+        </td>
+        <td>
+            {{ data.precioUnitario }}€
+        </td>
+        <td>
+            {{ data.precioUnitario * data.cantidad }}€
+        </td>
+        <td>
+            {% if envio == false %}
+                5.00€
+            {% else %}
+                <del>5.00€</del>
+            {% endif %}
+        </td>
+    </tr>
+  {% endfor %}
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Total {{ total + costo_envio }}€</th>
+            <th></th>
+        </tr>
+    </tfoot>
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#carrito').DataTable( {
+        } );
+    } );
+</script>
+
+{% endblock %}

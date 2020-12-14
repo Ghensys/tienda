@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticuloController!{% endblock %}
+
+{% block body %}
+<div class="row">
+  {% for articulo in articulos %}
+  
+  <div class="card" style="width: 18rem;">
+    <img src="{{ asset('uploads/image/' ~ articulo.image) }}" class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">{{ articulo.nombre }}</h5>
+    <p class="card-text">{{ articulo.precioUnitario }}€</p>
+    <a href="{{ path('ArticuloShow', {id: articulo.id}) }}" class="btn btn-primary">Comprar</a>
+    </div>
+  </div>
+ 
+
+  {% endfor %}
+ </div>
+{% endblock %}

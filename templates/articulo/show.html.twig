@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticuloController!{% endblock %}
+
+{% block body %}
+
+{% for data in articulo %}
+
+    <div class="container row">
+        <div class="col-md-6">
+            <img src="{{ asset('/uploads/image/' ~ data.image) }}" class="card-img-top" alt="...">
+        </div>
+        <div class="col-md-6">
+            <div>
+                <h1>{{ data.nombre }}</h1>
+                <h3>Color: {{ data.color.nombre }}</h3>
+                <h3>{{ data.descripcion }}</h3>
+            </div>
+                {{form(form)}}
+                Precio: {{ data.precioUnitario }}€
+            <div>
+                
+            <div></div>
+            
+            
+        </div>
+    </div>
+{% endfor %}
+
+{# {{ dump(articulo) }} #}
+    
+{% endblock %}
